@@ -8,8 +8,10 @@ except ImportError as e:
     os.system("sudo pip3 install numpy")
     import numpy as np
 
-def ridge(data):
-    pass
+def ridge(data,a=0.001):
+    x,y=read_data()
+    weight=np.matmul(np.linalg.inv(np.matmul(x.T,x)+aI),np.matmul(x.T,y))
+    return weight@data
     
 def lasso(data):
     pass
