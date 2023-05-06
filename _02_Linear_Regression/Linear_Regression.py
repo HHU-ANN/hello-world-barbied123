@@ -13,8 +13,12 @@ def ridge(data,a=0.2):
     weight=np.matmul(np.linalg.inv(np.matmul(x.T,x)+np.eye(x.shape[1]*a)),np.matmul(x.T,y))
     return weight@data
     
-def lasso(data):
-    pass
+def lasso(data,t=0.05,a=0.001):
+    x,y=read_data()
+    for i in range(400):
+        M=w-wt*np.matmul(x.T,x)+t*np.matmul(x.T,y)
+        w=sgn(M)(abs(M)-at)
+    return weight@data
 
 def read_data(path='./data/exp02/'):
     x = np.load(path + 'X_train.npy')
